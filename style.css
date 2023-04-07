@@ -160,29 +160,6 @@ header {
 input:checked ~ label {
     color: darkgray;
 }
-#todomate .category .todo .heart {
-    display: none;
-}
-
-#todomate .category .todo label::before {
-    content: '🤍';
-    font-size: 1rem;
-    margin-right: 0.2rem;
-    display: inline-block;
-}
-
-#todomate .category .todo .heart:hover+label::before {
-    content: '❤️';
-    font-size: 1rem;
-    margin-right: 0.2rem;
-    cursor: pointer;
-}
-
-#todomate .category .todo .heart:checked+label::before {
-    content: '❤️';
-    font-size: 1rem;
-    margin-right: 0.2rem;
-}
 
 
 /* footer css */
