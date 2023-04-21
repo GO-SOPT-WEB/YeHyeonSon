@@ -1,254 +1,271 @@
-const categories = document.querySelectorAll('.category');
-
-const data = [
+const products = [
   {
-    categoryName: 'Sopt',
-    todos: [
-      { id: 'check1', text: '웹팟 과제' },
-      { id: 'check2', text: '1차 세미나 복습' },
-      { id: 'check3', text: '리액트 서터디' },
-    ]
+    name: "아이스 아메리카노",
+    category: "커피",
+    hashtag: ["고소해", "쓰리샷 가능", "풍미"],
+    imgSrc: "asset/americano.jpg",
   },
   {
-    categoryName: 'Epris',
-    todos: [
-      { id: 'check4', text: '카드뉴스 피드백' },
-      { id: 'check5', text: '컨셉 아이디어 회의' },
-      { id: 'check6', text: '임원진 회의' },
-    ]
+    name: "돌체 콜드브루",
+    category: "커피",
+    hashtag: ["달콤쌉싸름", "집중력 향상", "국룰"],
+    imgSrc: "asset/dolche_coldbrew.jpg",
   },
   {
-    categoryName: 'Exercise',
-    todos: [
-      { id: 'check7', text: '기상운동' },
-      { id: 'check8', text: '홈트 1회' },
-      { id: 'check9', text: '스트레칭' },
-    ]
+    name: "돌체 라떼",
+    category: "커피",
+    hashtag: ["달다구리", "소화에최고", "스테디셀러"],
+    imgSrc: "asset/dolche_latte.jpg",
   },
   {
-    categoryName: 'Daily',
-    todos: [
-      { id: 'check10', text: '벙개~' },
-      { id: 'check11', text: '분당팟 모각공' },
-      { id: 'check12', text: '스벅 슈크림라떼 먹어보기 냠냠냠냐' },
-    ]
+    name: "캐모마일 블렌드 티",
+    category: "티",
+    hashtag: ["오묘쌉싸름", "진정", "건강한"],
+    imgSrc: "asset/camomile_blend_tea.jpg",
+  },
+  {
+    name: "블루베리 크림치즈 케이크",
+    category: "디저트",
+    hashtag: ["환상적", "시그니처", "블루베리"],
+    imgSrc: "asset/blueberry_cheese_cake_dessert.jpg",
+  },
+  {
+    name: "크루와상",
+    category: "디저트",
+    hashtag: ["달콤바삭", "겉바속촉", "행복한맛"],
+    imgSrc: "asset/croassanx_dessert.jpg",
+  },
+  {
+    name: "잉글리쉬 브렉퍼스트 티",
+    category: "티",
+    hashtag: ["홍차", "벌꿀향가득", "블랙티"],
+    imgSrc: "asset/english_breakfast_tea.jpg",
+  },
+  {
+    name: "잠봉 베이글 샌드위치",
+    category: "디저트",
+    hashtag: ["가벼운", "강한매니아층", "건강한맛"],
+    imgSrc: "asset/jambongbagle_dessert.jpg",
+  },
+  {
+    name: "자몽허니블랙티",
+    category: "티",
+    hashtag: ["달콤쌉싸름", "커스텀", "시그니처"],
+    imgSrc: "asset/jamonghoney_blacktea.jpg",
+  },
+  {
+    name: "쑥크림라떼",
+    category: "커피",
+    hashtag: ["진한쑥향", "할미입맛저격", "매니아층존재"],
+    imgSrc: "asset/ssukcream_latte.jpg",
+  },
+  {
+    name: "고구마케이크",
+    category: "디저트",
+    hashtag: ["달달한", "구황작물모여라", "할미입맛"],
+    imgSrc: "asset/sweetpotatocake_dessert.jpg",
   },
 ];
 
-categories.forEach((category, index) => {
-  const categoryName = category.querySelector('.name');
-  const todos = category.querySelectorAll('.todo');
+let checkboxes = document.querySelectorAll('#nav_category input[type="checkbox"]');
+const cardSection = document.getElementById("card_section");
+// console.log(cardSection);
+function renderCards(products) {
+  // 기존 카드 삭제
+  checkboxes = document.querySelectorAll('#nav_category input[type="checkbox"]');
+  console.log(products);
+  console.log(checkboxes);
+  cardSection.innerHTML = "";
 
-  categoryName.textContent = data[index].categoryName;
+  // 새로운 카드 추가
+  products.forEach(product => {
+    // 카드 생성
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-  todos.forEach((todo, todoIndex) => {
-    const todoInput = todo.querySelector('input');
-    const todoLabel = todo.querySelector('label');
+    // 카드 이름 추가
+    const cardName = document.createElement("div");
+    cardName.classList.add("card_name");
+    cardName.textContent = product.name;
+    card.appendChild(cardName);
 
-    todoInput.id = data[index].todos[todoIndex].id;
-    todoLabel.textContent = data[index].todos[todoIndex].text;
-    todoLabel.setAttribute('for', data[index].todos[todoIndex].id);
+    // 해시태그 추가
+    const hashtagLine = document.createElement("div");
+    hashtagLine.classList.add("hashtag-line");
+    const hashtagContainer = document.createElement("span");
+    hashtagContainer.classList.add("hashtag");
+    product.hashtag.forEach(tag => {
+      const hashtagTag = document.createElement("span");
+      hashtagTag.classList.add("hashtag-tag");
+      hashtagTag.textContent = tag;
+      hashtagContainer.appendChild(hashtagTag);
+    });
+    hashtagLine.appendChild(hashtagContainer);
+    const plusIcon = document.createElement("img");
+    plusIcon.classList.add("plus_icon");
+    plusIcon.src = "asset/plus_icon.svg";
+    plusIcon.alt = "더보기";
+    hashtagLine.appendChild(plusIcon);
+    // renderModal();
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    const closeBtn = document.createElement("span");
+    closeBtn.classList.add("close");
+    closeBtn.innerHTML = "&times;";
+    modal.appendChild(closeBtn);
+    const hashtags = document.createElement("div");
+    hashtags.classList.add("hashtags");
+    product.hashtag.forEach(tag => {
+      const modalTag = document.createElement("span");
+      modalTag.classList.add("modal-tag");
+      modalTag.textContent = tag;
+      hashtags.appendChild(modalTag);
+    });
+    modal.appendChild(hashtags);
+    hashtagLine.appendChild(modal);
+    card.appendChild(hashtagLine);
+    // 카드 이미지 추가
+    const cardImg = document.createElement("img");
+    cardImg.classList.add("card_img");
+    cardImg.src = product.imgSrc;
+    card.appendChild(cardImg);
+
+    // 하트 아이콘 추가
+    const heartIcon = document.createElement("img");
+    heartIcon.classList.add("heart");
+    heartIcon.src = "asset/heart_blank.svg";
+    heartIcon.alt = "하트";
+    card.appendChild(heartIcon);
+
+    // 카드 섹션에 추가
+    cardSection.appendChild(card);
   });
-});
+}
 
-//input
-/*
-const todoList = [
+//필터링
+const filterTags = document.querySelector("#filter_section");
+function renderFilterTags(selectedCategories) {
+  filterTags.innerHTML = "";
 
-    { category: Sopt,
-      titleList: "웹팟 과제", completed: false },
-    { title: "운동하기", completed: false },
-    { title: "저녁 약속", completed: false }
-  ];
+  selectedCategories.forEach(category => {
+    const filterTag = document.createElement("span");
+    filterTag.classList.add("filter-tag");
+    filterTag.textContent = category;
+    // console.log(filterTag);
+    const xButton = document.createElement("button");
+    xButton.classList.add("filter-tag__close");
+    xButton.textContent = "X";
 
-//checkbox 클릭 시 completed: true로 변경
-*/
-  // + 버튼 클릭 이벤트 등록
-  const addBtns = document.querySelectorAll('.add-todo-btn');
-  const modalTemplate = document.querySelector('.modal-template');
-  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  let newTodoElem;
-  let newTodo;
+    // x버튼 누를 때 필터링으로 삭제
+    xButton.addEventListener("click", () => {
+      const content = filterTag.textContent.replace("X", "");
+      console.log(content);
+      filterTag.remove();
+      // span 요소를 선택
+      // span 요소의 텍스트가 일치하는 checkbox 요소를 선택
+      const typeList = document.querySelectorAll(".type_list"); // 모든 .type_list 요소를 선택
 
-function addTodo() {
-  // ...
+      typeList.forEach(function (item) {
+        const span = item.querySelector("span"); // 현재 요소 내의 span 요소를 선택
 
-  // 새로운 할 일 추가
-  newTodoElem = document.createElement('div');
-  newTodoElem.classList.add('todo');
-  newTodoElem.innerHTML = `
-    <input type="checkbox" id="check${todoList.length}" />
-    <label for="check${todoList.length}">${newTodo}</label>
-  `;
-  category.appendChild(newTodoElem);
-
-  // checkboxes에 새로운 체크박스 추가
-  const newCheckbox = newTodoElem.querySelector('input[type="checkbox"]');
-  checkboxes.push (newCheckbox);
-  // count 갱신
-  countUnchecked();
-};
-
-
-  function countUnchecked() {
-    // 1. HTML 파일에서 checkbox 요소들을 선택
-  const allCheckboxes = [...checkboxes];
-  if (newTodoElem) {
-    allCheckboxes.push(newTodoElem.querySelector('input[type="checkbox"]'));
-  }
-    /*
-    const allCheckboxes = Array.from(checkboxes).concat(newTodoElem);
-    */
-    // 2. 체크되지 않은 요소들의 개수를 계산
-    const uncheckedCount = allCheckboxes
-      .filter((checkbox) => !checkbox.checked)
-      .length;
+        if (span.textContent === content) {
+          console.log(span);
+          const checkbox = item.querySelector('input[type="checkbox"]'); // 현재 요소 내의 checkbox 요소를 선택
+          checkbox.checked = false; // checkbox를 해제
+          console.log(checkbox);
+        }
+      });
     
-    // 3. 계산된 개수를 표시
-    const countElement = document.getElementById('fri_count');
-    countElement.textContent = uncheckedCount;
-  };
-
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', countUnchecked);
-  });
-
-
-  addBtns.forEach(addBtn => {
-    addBtn.addEventListener('click', () => {
-      // 모달 생성 및 표시
-      const modal = modalTemplate.cloneNode(true);
-      modal.classList.add('modal');
-      document.body.appendChild(modal);
-      // 모달 보이기
-      modal.style.display = 'block';
-      // submit 이벤트 등록
-      const form = modal.querySelector('form');
-
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const input = form.querySelector('input');
-        const newTodo = input.value;
-        const category = addBtn.closest('.category');
-        const todoList = category.querySelectorAll('.todo');
-        const newTodoElem = document.createElement('div');
-        newTodoElem.classList.add('todo');
-        newTodoElem.innerHTML = `
-          <input type="checkbox" id="check${todoList.length}" />
-          <label for="check${todoList.length}">${newTodo}</label>
-        `;
-        // 새로운 할 일 추가
-        category.appendChild(newTodoElem);
-        // checkboxes에 새로운 체크박스 추가
-      checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        //count 갱신
-        countUnchecked();
-        modal.remove();
-      });
+      filterCards(products);
+     
     });
+
+    // Append X button to filter tag
+    filterTag.appendChild(xButton);
+
+    filterTags.appendChild;
+    filterTags.appendChild(filterTag);
   });
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    // 달력 버튼 클릭 시 홈페이지로 이동
-    document.querySelector("#calendar-btn").addEventListener("click", function() {
-      window.location.href = "/";
-    });
-  
-    // MY 버튼 클릭 시 mycategory 페이지로 이동
-    document.querySelector("#my-btn").addEventListener("click", function() {
-      window.location.href = "/mycategory";
-    });
-  });
-  
-  /*
-  newTodoElem.addEventListener('input', countUnchecked);
+}
 
-  /*
-      // submit 이벤트 등록
-      const form = modal.querySelector('form');
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const input = form.querySelector('input');
-        const newTodo = input.value;
-        const todoList = addBtns.parentNode.parentNode.querySelectorAll('.todo');
-        const newTodoElem = document.createElement('div');
-        newTodoElem.classList.add('todo');
-        newTodoElem.innerHTML = `
-          <input type="checkbox" id="check${todoList.length}" />
-          <label for="check${todoList.length}">${newTodo}</label>
-        `;
-         // 새로운 할 일 추가
-            addBtns.parentNode.parentNode.appendChild(newTodoElem);
-        modal.remove();
-      });
 
-  /*
-// HTML 요소 참조
-const addTodoBtn = document.querySelectorAll('.category-name button');
-const modal = document.querySelector('.modal');
-const modalContent = document.querySelector('.modal-content');
-const inputTodo = document.querySelector('input[type="text"]');
-const categoryList = document.querySelector('.category');
-
-// + 버튼 클릭 시 모달 띄우기
-addTodoBtn.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    modal.style.display = 'block';
-  });
-});
-
-// 모달 닫기
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = 'none';
-  }
-});
-
-// 새로운 할 일 목록 추가
-modalContent.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const newTodo = inputTodo.value;
-  inputTodo.value = '';
-  modal.style.display = 'none';
-
-  // 할 일 목록(todo) 추가
-  const todoItem = document.createElement('div');
-  todoItem.classList.add('todo');
-  todoItem.innerHTML = `
-    <input type='checkbox' id='check${categoryList.childElementCount + 1}'>
-    <label for='check${categoryList.childElementCount + 1}'>${newTodo}</label>
-  `;
-  categoryList.appendChild(todoItem);
-});
- 
- 
-  /*
-  // 할 일 완료 클릭시 갯수가 줄어드는 함수
-  function completeTodo() {
-    const todoIndex = parseInt(event.target.dataset.index);
-    todoList[todoIndex].completed = true;
-    displayIncompleteTodoCount();
-  }
-  
-  // HTML이 로드된 후 실행될 함수
-  function init() {
-    // 할일 목록을 HTML에 렌더링
-    const todoListElement = document.getElementById("todo-list");
-    todoList.forEach((todo, index) => {
-      const todoElement = document.createElement("li");
-      todoElement.innerText = todo.title;
-      if (todo.completed) {
-        todoElement.classList.add("completed");
-      } else {
-        todoElement.addEventListener("click", completeTodo);
-        todoElement.dataset.index = index;
+//카드 필터링
+function filterCards(products) {
+  const selectedCategories = [];
+  let isAllChecked = false;
+  checkboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      console.log(checkbox.nextElementSibling.textContent);
+      if (checkbox.nextElementSibling.textContent === "전체") {
+        isAllChecked = true;
       }
-      todoListElement.appendChild(todoElement);
+      selectedCategories.push(checkbox.nextElementSibling.textContent);
+    }
+  });
+  console.log(isAllChecked);
+  console.log(products);
+  const filteredProducts = products.filter(product => {
+    console.log(product);
+    // console.log(product.catesgory);
+    return selectedCategories.includes(product.category);
+  });
+  console.log(filteredProducts);
+  isAllChecked ? renderCards(products) : renderCards(filteredProducts);
+  renderFilterTags(selectedCategories);
+}
+
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener("change", () => {
+    filterCards(products);
+    console.log(products);
+  });
+});
+
+//card 에 모달 띄우기
+const cards = document.querySelectorAll(".card");
+
+cards.forEach((card, index) => {
+  const cardName = card.querySelector(".card_name");
+  const cardHashtag = card.querySelectorAll(".hashtag-tag");
+  const cardImg = card.querySelector(".card_img");
+
+  cardName.textContent = products[index].name;
+  cardImg.src = products[index].imgSrc;
+
+  products[index].hashtag.forEach((tag, tagIndex) => {
+    cardHashtag[tagIndex].textContent = tag;
+  });
+});
+
+const modals = document.querySelectorAll(".modal");
+
+modals.forEach((modal, index) => {
+  const plusIcon = document.querySelectorAll(".plus_icon")[index];
+  const closeModal = document.getElementsByClassName("close")[index];
+  const hashtags = modal.querySelector(".hashtags");
+
+  plusIcon.addEventListener("click", () => {
+    modal.style.display = "block";
+    hashtags.innerHTML = "";
+
+    products[index].hashtag.forEach(tag => {
+      const hashtagTag = document.createElement("span");
+      hashtagTag.classList.add("hashtag-tag");
+      hashtagTag.textContent = tag;
+      hashtags.appendChild(hashtagTag);
     });
-  
-    // 미완료한 할일의 갯수를 HTML에 렌더링
-    displayIncompleteTodoCount();
-  }
-  
-  // HTML이 로드된 후 init 함수 실행
-  window.addEventListener("load", init);*/
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", event => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+});
+
+
+  renderCards(products);
