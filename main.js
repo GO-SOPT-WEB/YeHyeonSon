@@ -140,7 +140,7 @@ function renderCards(products) {
       plusIcon.addEventListener("click", () => {
         modal.style.display = "block";
         hashtags.innerHTML = "";
-        modalTags.forEach(tag => {
+        products[index].hashtag.forEach(tag => {
           const hashtagTag = document.createElement("span");
           hashtagTag.classList.add("hashtag-tag");
           hashtagTag.textContent = tag;
@@ -191,7 +191,7 @@ function renderFilterTags(selectedCategories) {
     xButton.classList.add("filter-tag__close");
     xButton.textContent = "X";
 
-  
+
     xButton.addEventListener("click", () => {
       const content = filterTag.textContent.replace("X", "");
       console.log(content);
@@ -209,12 +209,12 @@ function renderFilterTags(selectedCategories) {
           console.log(checkbox);
         }
       });
-      
+
       filterCards(products);
-      
+    
     });
 
-    
+    // Append X button to filter tag
     filterTag.appendChild(xButton);
 
     filterTags.appendChild;
@@ -273,7 +273,6 @@ checkboxes.forEach(checkbox => {
   });
 });
 
-
 //card 에 모달 띄우기
 const cards = document.querySelectorAll(".card");
 
@@ -292,4 +291,3 @@ cards.forEach((card, index) => {
 });
 
 
-  renderCards(products);
