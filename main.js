@@ -68,6 +68,7 @@ const products = [
 ];
 
 let checkboxes = document.querySelectorAll('#nav_category input[type="checkbox"]');
+
 const cardSection = document.getElementById("card_section");
 // console.log(cardSection);
 function renderCards(products) {
@@ -106,7 +107,7 @@ function renderCards(products) {
     plusIcon.src = "asset/plus_icon.svg";
     plusIcon.alt = "더보기";
     hashtagLine.appendChild(plusIcon);
-    // renderModal();
+    let modalTags = [];
     const modal = document.createElement("div");
     modal.classList.add("modal");
     const closeBtn = document.createElement("span");
@@ -115,7 +116,10 @@ function renderCards(products) {
     modal.appendChild(closeBtn);
     const hashtags = document.createElement("div");
     hashtags.classList.add("hashtags");
+    console.log(product);
     product.hashtag.forEach(tag => {
+      console.log(tag);
+      modalTags.push(tag);
       const modalTag = document.createElement("span");
       modalTag.classList.add("modal-tag");
       modalTag.textContent = tag;
@@ -124,6 +128,37 @@ function renderCards(products) {
     modal.appendChild(hashtags);
     hashtagLine.appendChild(modal);
     card.appendChild(hashtagLine);
+
+    //
+    console.log(modalTags);
+    const modals = document.querySelectorAll(".modal");
+
+    modals.forEach((modal, index) => {
+      const plusIcon = document.querySelectorAll(".plus_icon")[index];
+      const closeModal = document.getElementsByClassName("close")[index];
+      const hashtags = modal.querySelector(".hashtags");
+      plusIcon.addEventListener("click", () => {
+        modal.style.display = "block";
+        hashtags.innerHTML = "";
+        modalTags.forEach(tag => {
+          const hashtagTag = document.createElement("span");
+          hashtagTag.classList.add("hashtag-tag");
+          hashtagTag.textContent = tag;
+          hashtags.appendChild(hashtagTag);
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", event => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    });
+
     // 카드 이미지 추가
     const cardImg = document.createElement("img");
     cardImg.classList.add("card_img");
@@ -156,13 +191,12 @@ function renderFilterTags(selectedCategories) {
     xButton.classList.add("filter-tag__close");
     xButton.textContent = "X";
 
-    // x버튼 누를 때 필터링으로 삭제
+  
     xButton.addEventListener("click", () => {
       const content = filterTag.textContent.replace("X", "");
       console.log(content);
       filterTag.remove();
-      // span 요소를 선택
-      // span 요소의 텍스트가 일치하는 checkbox 요소를 선택
+      
       const typeList = document.querySelectorAll(".type_list"); // 모든 .type_list 요소를 선택
 
       typeList.forEach(function (item) {
@@ -175,21 +209,39 @@ function renderFilterTags(selectedCategories) {
           console.log(checkbox);
         }
       });
-    
+      
       filterCards(products);
-     
+      
     });
 
-    // Append X button to filter tag
+    
     filterTag.appendChild(xButton);
 
     filterTags.appendChild;
     filterTags.appendChild(filterTag);
   });
 }
+function renderModal() {
+  // modal 만들기
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  const closeBtn = document.createElement("span");
+  closeBtn.classList.add("close");
+  closeBtn.innerHTML = "&times;";
+  modal.appendChild(closeBtn);
+  const hashtags = document.createElement("div");
+  hashtags.classList.add("hashtags");
+  product.hashtag.forEach(tag => {
+    const modalTag = document.createElement("span");
+    modalTag.classList.add("modal-tag");
+    modalTag.textContent = tag;
+    hashtags.appendChild(modalTag);
+  });
+  modal.appendChild(hashtags);
+  hashtagLine.appendChild(modal);
+  card.appendChild(hashtagLine);
+}
 
-
-//카드 필터링
 function filterCards(products) {
   const selectedCategories = [];
   let isAllChecked = false;
@@ -221,6 +273,7 @@ checkboxes.forEach(checkbox => {
   });
 });
 
+
 //card 에 모달 띄우기
 const cards = document.querySelectorAll(".card");
 
@@ -233,37 +286,8 @@ cards.forEach((card, index) => {
   cardImg.src = products[index].imgSrc;
 
   products[index].hashtag.forEach((tag, tagIndex) => {
+    console.log(tag);
     cardHashtag[tagIndex].textContent = tag;
-  });
-});
-
-const modals = document.querySelectorAll(".modal");
-
-modals.forEach((modal, index) => {
-  const plusIcon = document.querySelectorAll(".plus_icon")[index];
-  const closeModal = document.getElementsByClassName("close")[index];
-  const hashtags = modal.querySelector(".hashtags");
-
-  plusIcon.addEventListener("click", () => {
-    modal.style.display = "block";
-    hashtags.innerHTML = "";
-
-    products[index].hashtag.forEach(tag => {
-      const hashtagTag = document.createElement("span");
-      hashtagTag.classList.add("hashtag-tag");
-      hashtagTag.textContent = tag;
-      hashtags.appendChild(hashtagTag);
-    });
-  });
-
-  closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  window.addEventListener("click", event => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
   });
 });
 
