@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB TODO MATE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <Container class="mobileWidth">
+        <header>WEB TODO MATE</header>
+        <main>
+            <section id="week">
+                <div class="week_content">
+                    <div class="day-week">
+                        <span class="day">월</span>
+                        <span class="day">화</span>
+                        <span class="day">수</span>
+                        <span class="day">목</span>
+                        <span class="day">금</span>
+                        <span class="day">토</span>
+                        <span class="day">일</span>
+                    </div>
+                    <div class="count-week">
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">2</div>
+                            </div>
+                            <div>3</div>
+                        </div>
+
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">4</div>
+                            </div>
+                            <div>4</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">8</div>
+                            </div>
+                            <div>5</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">7</div>
+                            </div>
+                            <div>6</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_purple.svg" alt="보라색하트">
+                                <div class="heart_count" id="fri_count">12</div>
+                            </div>
+                            <div>7</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">6</div>
+                            </div>
+                            <div>8</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">1</div>
+                            </div>
+                            <div>9</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <section id="todolist">
+             <!-- 모달 -->
+                    <div class="modal-template">
+                        <div class="modal-content">
+                        <h2>Add New Todo</h2>
+                        <form>
+                            <label for="new-todo">New Todo:</label>
+                            <input type="text" id="new-todo" name="new-todo">
+                            <button type="submit">추가</button>
+                        </form>
+                        </div>
+                    </div>
+
+                    <div class="category">
+                    <div class="category-name" style="background-color: rgb(94, 6, 138);">
+                        <div class="name"></div>
+                        <button type="button" class="add-todo-btn">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check1" type="checkbox">
+                        <label for="check1"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check2" type="checkbox">
+                        <label for="check2"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check3" type="checkbox">
+                        <label for="check3"></label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(196, 9, 84);">
+                        <div class="name"></div>
+                        <button type="button" class="add-todo-btn">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check4" type="checkbox">
+                        <label for="check4"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check5" type="checkbox">
+                        <label for="check5"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check6"  type="checkbox">
+                        <label for="check6"></label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(227, 174, 29);">
+                        <div class="name"></div>
+                        <button type="button" class="add-todo-btn">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check7" type="checkbox">
+                        <label for="check7"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check8" type="checkbox">
+                        <label for="check8"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check9" type="checkbox">
+                        <label for="check9"></label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(14, 102, 225);">
+                        <div class="name"></div>
+                        <button type="button" class="add-todo-btn">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check10" type="checkbox">
+                        <label for="check10"><label>
+                    </div>
+                    <div class="todo">
+                        <input id="check11" type="checkbox">
+                        <label for="check11"></label>
+                    </div>
+                    <div class="todo">
+                        <input id="check12" type="checkbox">
+                        <label for="check12"></label>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        <footer>
+            <a href="/mytodo">
+            <button>
+                <img class="home_icon" src="asset/home.svg" alt="홈아이콘">
+                <div>달력</div>
+            </button>
+        </a>
+        <a href="/mycategory">
+            <button>
+                <img class="user_icon" src="asset/user.svg" alt="유저아이콘">
+
+                <div>MY</div>
+            </button>
+            </a>
+        </footer>
+    </Container>
+    <script src="main.js"></script>
+</body>
+
+</html>
