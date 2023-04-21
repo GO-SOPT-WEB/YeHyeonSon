@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yesonbucks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 class="header_logo">☕️ YESONBUCKS ☕️ </h1>
+        <i> <img src="asset/hamburger.png" alt="햄버거바" class="hamburger"/>
+            <nav class="hamburger_list">
+                <h1 class="list_title">MENU</h1>
+                <div class="list_menu">새 상품 추가</div>
+                <div class="list_menu">찜 목록</div>
+            </nav>
+        </i>
+    </header>
+
+
+    <main>
+        <nav id="nav_category">
+            <div class="type">TYPE</div>
+            <div class="type_list">
+                <input class="checkbox" type="checkbox">
+                <span>전체</span>
+            </div>
+            <div class="type_list">
+                <input class="checkbox" type="checkbox">
+                <span>커피</span>
+            </div>
+            <div class="type_list">
+                <input class="checkbox" type="checkbox">
+                <span>디저트</span>
+            </div>
+            <div class="type_list">
+                <input class="checkbox" type="checkbox">
+                <span>티</span>
+            </div>
+        </nav>
+
+        <div id="not_nav_section">
+        <div id="filter_section">
+            <button class="filter_btn" data-filter="all">
+                <div class="filter_text">전체</div>
+                <img src="asset/delete_icon.svg" alt="필터 삭제" class="filter_delete"/>
+            </button>
+            <button class="filter_btn" data-filter="coffee">
+                <div class="filter_text">커피</div>
+                <img src="asset/delete_icon.svg" alt="필터 삭제" class="filter_delete"/>
+            </button>
+            <button class="filter_btn" data-filter="dessert">
+                <div class="filter_text">디저트</div>
+                <img src="asset/delete_icon.svg" alt="필터 삭제" class="filter_delete"/>
+            </button>
+            <button class="filter_btn" data-filter="tea">
+                <div class="filter_text">티</div>
+                <img src="asset/delete_icon.svg" alt="필터 삭제" class="filter_delete"/>
+            </button>
+          </div>
+
+        <section id="card_section">
+            <div class="card">
+                <div class="card_name">아이스 아메리카노</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">고소해</span>
+                    <span class="hashtag-tag">쓰리샷 가능</span>
+                    <img src="asset/plus_icon.svg" alt="더보기" class="plus_icon"/>
+                    <span class="hashtag-tag">풍미</span>
+                    <img src="asset/plus_icon.svg" alt="더보기" class="plus_icon"/>
+                </div>
+                <img src="asset/americano.jpg" alt="아이스 아메리카노" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">돌체 콜드브루</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">달콤쌉싸름</span>
+                    <span class="hashtag-tag">집중력 향상</span>
+                    <span class="hashtag-tag">국룰</span>
+                </div>
+                <img src="asset/dolche_coldbrew.jpg" alt="돌체 콜드브루" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+
+            </div>
+
+            <div class="card">
+                <div class="card_name">돌체 라떼</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">달다구리</span>
+                    <span class="hashtag-tag">소화에최고</span>
+                    <span class="hashtag-tag">스테디셀러</span>
+                </div>
+                <img src="asset/dolche_latte.jpg" alt="돌체 라떼" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">캐모마일 블렌드 티</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">오묘쌉싸름</span>
+                    <span class="hashtag-tag">진정</span>
+                    <span class="hashtag-tag">건강한</span>
+                </div>
+                <img src="asset/camomile_blend_tea.jpg" alt="캐모마일 블렌드 티" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">블루베리 크림치즈 케이크</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">환상적</span>
+                    <span class="hashtag-tag">시그니처</span>
+                    <span class="hashtag-tag">블루베리</span>
+                </div>
+                <img src="asset/blueberry_cheese_cake_dessert.jpg" alt="블루베리 크림 치즈 케이크" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+            
+            <div class="card">
+                <div class="card_name">크루와상</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">달콤바삭</span>
+                    <span class="hashtag-tag">겉바속촉</span>
+                    <span class="hashtag-tag">행복한맛</span>
+                </div>
+                <img src="asset/croassanx_dessert.jpg" alt="크루와상" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">잉글리쉬 브렉퍼스트 티</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">홍차</span>
+                    <span class="hashtag-tag">벌꿀향가득</span>
+                    <span class="hashtag-tag">블랙티</span>
+                </div>
+                <img src="asset/english_breakfast_tea.jpg" alt="잉글리쉬 브렉퍼스트 티" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">잠봉 베이글 샌드위치</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">가벼운</span>
+                    <span class="hashtag-tag">강한매니아층</span>
+                    <span class="hashtag-tag">건강한맛</span>
+                </div>
+                <img src="asset/jambongbagle_dessert.jpg" alt="잠봉베이글 샌드위치" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">자몽허니블랙티</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">달콤쌉싸름</span>
+                    <span class="hashtag-tag">커스텀</span>
+                    <span class="hashtag-tag">시그니처</span>
+                </div>
+                <img src="asset/jamonghoney_blacktea.jpg" alt="자몽허니블랙티" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">쑥크림라떼</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">진한쑥향</span>
+                    <span class="hashtag-tag">할미입맛저격</span>
+                    <span class="hashtag-tag">매니아층존재</span>
+                </div>
+                <img src="asset/ssukcream_latte.jpg" alt="쑥크림라떼" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+
+            <div class="card">
+                <div class="card_name">고구마케이크</div>
+                <div class="hashtag">
+                    <span class="hashtag-tag">달달한</span>
+                    <span class="hashtag-tag">구황작물모여라</span>
+                    <span class="hashtag-tag">할미입맛</span>
+                </div>
+                <img src="asset/sweetpotatocake_dessert.jpg" alt="고구마케이크" class="card_img"/>
+                <img src="asset/heart_blank.svg" alt="하트" class="heart"/>
+            </div>
+        </div>
+        </section>
+    </main>
+
+    <script src="main2.js"></script>
+</body>
+</html>
