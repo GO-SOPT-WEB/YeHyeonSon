@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB TODO MATE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <Container class="mobileWidth">
+        <header>WEB TODO MATE</header>
+        <main>
+            <section id="week">
+                <div class="week_content">
+                    <div class="day-week">
+                        <span class="day">월</span>
+                        <span class="day">화</span>
+                        <span class="day">수</span>
+                        <span class="day">목</span>
+                        <span class="day">금</span>
+                        <span class="day">토</span>
+                        <span class="day">일</span>
+                    </div>
+                    <div class="count-week">
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">2</div>
+                            </div>
+                            <div>3</div>
+                        </div>
+
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">4</div>
+                            </div>
+                            <div>4</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">8</div>
+                            </div>
+                            <div>5</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">7</div>
+                            </div>
+                            <div>6</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_purple.svg" alt="보라색하트">
+                                <div class="heart_count">5</div>
+                            </div>
+                            <div>7</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">6</div>
+                            </div>
+                            <div>8</div>
+                        </div>
+                        <div class="count-day">
+                            <div class="heart">
+                                <img class="heart_img" src="asset/heart_red.svg" alt="하트">
+                                <div class="heart_count">1</div>
+                            </div>
+                            <div>9</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <section id="todolist">
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(94, 6, 138);">
+                        <div class="name"> Sopt </div>
+                        <button type="button">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check1" type="checkbox">
+                        <label for="check1">웹팟 과제</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check2" type="checkbox">
+                        <label for="check2">1차 세미나 복습</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check3" type="checkbox">
+                        <label for="check3">리액트 서터디</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(196, 9, 84);">
+                        <div class="name">Epris</div>
+                        <button type="button">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check4" type="checkbox">
+                        <label for="check4">카드뉴스 피드백</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check5" type="checkbox">
+                        <label for="check5">컨셉 아이디어 회의</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check6"  type="checkbox">
+                        <label for="check6">임원진 회의</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(227, 174, 29);">
+                        <div class="name">Exercise</div>
+                        <button type="button">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check7" type="checkbox">
+                        <label for="check7">기상운동</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check8" type="checkbox">
+                        <label for="check8">홈트 1회</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check9" type="checkbox">
+                        <label for="check9">스트레칭</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <div class="category-name" style="background-color: rgb(14, 102, 225);">
+                        <div class="name">Daily</div>
+                        <button type="button">+</button>
+                    </div>
+                    <div class="todo">
+                        <input id="check10" type="checkbox">
+                        <label for="check10">벙개~<label>
+                    </div>
+                    <div class="todo">
+                        <input id="check11" type="checkbox">
+                        <label for="check11">분당팟 모각공</label>
+                    </div>
+                    <div class="todo">
+                        <input id="check12" type="checkbox">
+                        <label for="check12">스벅 슈크림라떼 먹어보기 냠냠냠냐</label>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+        <footer>
+            <button>
+                <img class="home_icon" src="asset/home.svg" alt="홈아이콘">
+                <div>달력</div>
+            </button>
+            <button>
+                <img class="user_icon" src="asset/user.svg" alt="유저아이콘">
+
+                <div>MY</div>
+            </button>
+        </footer>
+    </Container>
+    <script src="main.js"></script>
+</body>
+
+</html>
