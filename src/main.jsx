@@ -3,14 +3,20 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import App from './App.jsx'
 import './index.css'
+import GlobalStyle from './components/GlobalStyle.jsx'
 
 const theme = {
-  backgroundColor: '#9d9d9d',
-}
+  primaryColor: '#dd60c0',
+  secondaryColor: '#07b05b',
+  fontFamily: 'bitbit, sans-serif',
+  fontSize: '1.2rem',
+};
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-    <App />
+      <GlobalStyle/>
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
-)
+);

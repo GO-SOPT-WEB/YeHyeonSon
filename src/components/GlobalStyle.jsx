@@ -1,9 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${props => props.theme.backgroundColor};
-    color: ${props => props.theme.textColor};
-    font-family: ${props => props.theme.fontFamily};
+const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'bitbit';
+    src: url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),
+      url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2');
   }
+  
+  color: pink;
+  
 `;
+
+export default GlobalStyle;
+

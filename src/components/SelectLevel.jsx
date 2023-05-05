@@ -4,14 +4,20 @@ import styled from 'styled-components';
 const Level = styled.nav`
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin: 1rem;
 `
 const LevelButton = styled.button`
   display: flex;
   justify-content: center;
   margin:1rem;
-  background-color: rgb(255, 119, 171);
+  font-size: ${props => props.theme.fontSize};
+  font-family: ${props => props.theme.fontFamily};
+
+  background-color: ${props => props.theme.primaryColor};
   color: white;
+  &:hover {
+    background-color: ${props => props.theme.secondaryColor};
+    }
   `;
 
 const SelectLevel = ({ handleLevelClick }) => {

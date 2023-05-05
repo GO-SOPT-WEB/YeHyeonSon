@@ -9,7 +9,8 @@ const HeaderWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-family: ${props => props.theme.fontFamily};
+  font-size: 3.5rem;
   text-align: center;
   color: #fff;
 `;
@@ -21,11 +22,12 @@ const glowAnimation = keyframes`
   }
   to {
     color: white;
-    text-shadow: none;
+    text-shadow: 0 0 20px pink;
   }
 `;
 
 const MatchedCountWrapper = styled.h2`
+  font-family: ${props => props.theme.fontFamily};
   font-size: 3rem;
   text-align: center;
   color: pink;

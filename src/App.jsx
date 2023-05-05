@@ -5,6 +5,7 @@ import SelectLevel from './components/SelectLevel';
 import ResetGame from './components/ResetGame';
 import Header from './components/Header';
 import CardGrid from './components/CardGrid';
+import ModalPortal from './components/ModalPortal';
 
 
 
@@ -16,6 +17,9 @@ function App() {
     const [disabled, setDisabled] = useState(false);
     const [matchedCount, setMatchedCount] = useState(0); //정답 수
     const [cardPairs, setCardPairs] = useState(5); //카드 짝 수
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+   
    
 
     const getFilteredData = () => {
@@ -86,10 +90,10 @@ function App() {
     const handleChoice = (card) => {
       if(!choiceOne || (choiceOne && !choiceTwo)){
       choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-      // not here
+    
       }
     }
-    //compare 2 selected cards
+    //2개의 카드가 선택되면 비교하기
     useEffect(()=>{
       if(choiceOne && choiceTwo){
         setDisabled(true)
@@ -119,7 +123,7 @@ function App() {
   
     console.log(cards)
   
-    // reset choices & increase turn
+    // choice 리셋하고 턴 수 증가
     const resetTurn = () => {
       setChoiceOne(null);
       setChoiceTwo(null);
@@ -127,14 +131,37 @@ function App() {
       setDisabled(false);
     }
   
-    //start a new game automagically
+    
     useEffect(()=>{
       shuffleCards()
     },[])
-  
+
+    const handleMatchedCount = (count) => {
+      setMatchedCount(count);
+    };
+
+    const openModal = () => {
+      setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+      setIsModalOpen(false);
+    };
+
+    // Render ModalPortal based on the isModalOpen state
+  const modal = isModalOpen ? (
+    <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />
+  ) : null;
+
+ useEffect(() => {
+  if (matchedCount/2 === cards.length /2 && !isModalOpen) {
+    openModal();
+  }
+ }, [matchedCount, cards.length, isModalOpen]);
   
   return(
     <div>
+      {modal}
       <Header matchedCount={matchedCount} cards={cards}/>
       <SelectLevel handleLevelClick={handleLevelClick}/>
       <ResetGame shuffleCards={shuffleCards}/>
@@ -145,8 +172,8 @@ function App() {
         handleChoice={handleChoice}
         disabled={disabled}
       />
-      <p>turns: {turns}</p>
-      <p>정답 수: {matchedCount /2} / {cards.length / 2}</p>
+      <p>시도횟수: {turns}</p>
+      <p>정답수: {matchedCount /2} / {cards.length / 2}</p>
     
     </div>
   );
