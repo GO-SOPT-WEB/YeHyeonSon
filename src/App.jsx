@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import './App.css';
 import Viewer from './componet/Viewer';
 import Controller from './componet/Controller';
+import Even from './componet/Even';
 
 
 function App() {
@@ -50,6 +51,7 @@ useEffect(()=>{
     </section>
     <section>
     <Viewer count = {count}/>
+    {count % 2 === 0 && <Even/>}
     </section>
     <section>
     <Controller handleSetCount={handleSetCount}/>
