@@ -35,7 +35,7 @@ const Daycard = () => {
           <p>최저/최고: {weather.main?.temp_min} ℃ / {weather.main?.temp_max} ℃</p>
         </St.Text>
         <St.Text>
-          <p>구름: {weather.weather?.[0].description}</p>
+          <p>구름: {weather.clouds?.all} %</p>
         </St.Text>
       </St.CardWrapper>
     )
