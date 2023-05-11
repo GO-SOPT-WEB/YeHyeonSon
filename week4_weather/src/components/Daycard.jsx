@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import { WEATHER_TYPE } from '../constants/weather'
+
 
 const Daycard = () => {
+
+  const [weather, setWeather] = React.useState(null);
+
+  useEffect(() => {
+    axios
+    .get('https://api.openweathermap.org/data/2.5/weather?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric')
+    .then((response) => {
+    console.log(response.data);
+    })
+    .catch((error) => {
+    console.log(error);
+    });
+    }, []);
+
   return (
     <St.CardWrapper>
     <St.H1>도시명</St.H1>
+    
     <St.Text>
     <p>온도</p>
     </St.Text>

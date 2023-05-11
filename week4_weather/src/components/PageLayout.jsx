@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Header from './Header';
 import SearchForecast from './SearchForecast';
 
+
+
 const PageLayout = (props) => {
   const { children } = props;
 
