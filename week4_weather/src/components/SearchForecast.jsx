@@ -1,23 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 
 const SearchForecast = () => {
+  const [area, setArea] = useState('');
+  const [option, setOption] = useState('day'); // ['day', 'week']
+  const navigate = useNavigate();
+
+  const handleSelect = (e) => {
+    setOption(e.target.value);
+    };
+
+  const handleChange = (e) => {
+    setArea(e.target.value);
+    };
+  
+  const handleClick = () => {
+        navigate(`/${option}/${area}`);
+    };
+
   return (
     <St.SearchBar>
     <St.ComboBox>
-    <select>
-			<option key="daily" value="일간">
+    <select onChange={handleSelect}>
+			<option key="day" value="일간">
 				오늘
 			</option>
-			<option key="weekly" value="주간">주간</option>
+			<option key="week" value="주간">주간</option>
 		</select>
     </St.ComboBox>
     <St.Input 
     input type="text" placeholder="영어로 도시명(ex. seoul)"
+    onChange={handleChange}
     />
     <St.Button 
-    button type="button">날씨 검색
+    button type="button" onClick={handleClick}>날씨 검색
     </St.Button>
 
     </St.SearchBar>
