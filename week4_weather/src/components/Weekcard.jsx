@@ -9,10 +9,15 @@ const Weekcard = () => {
 
     const { area } = useParams();
     const [weather, setWeather] = useState([]);
-    const imgURL = WEATHER_TYPE.filter(item => item.description === weather.weather?.[0].description)[0]?.imgURL || WEATHER_TYPE[0].imgURL;
+    const imgURL = 
+    WEATHER_TYPE.filter(
+        item => 
+        item.description === weather.weather?.[0].description
+        )[0]?.imgURL || WEATHER_TYPE[0].imgURL;
 
 
     console.log(imgURL)
+
     useEffect(() => {
       axios
       .get(`https://api.openweathermap.org/data/2.5/forecast?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric`)
@@ -24,17 +29,18 @@ const Weekcard = () => {
         console.log(error);
       });
     }, [area]);
-
-
+    
+    const weatherList = weather.filter((_, index) => (index - 2) % 8 === 0);
+    
     return (
         <St.Container>
-        {weather.map((item, index) => (
+        {weatherList.map((item, index) => (
           <St.CardWrapper key={index}>
             <St.H1>
             {new Date(item.dt_txt).toLocaleDateString()}
             </St.H1>
             {imgURL && <img src={imgURL} alt={item.weather?.[0].description || "weather"}/>}
-        <St.H1>{item.name}</St.H1>
+        <St.H1>{item.city?.name}</St.H1>
         <St.Text>
           <p>온도: {item.main?.temp} ℃</p>
         </St.Text>

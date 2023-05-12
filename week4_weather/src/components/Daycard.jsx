@@ -26,8 +26,8 @@ const Daycard = () => {
 
     return (
       <St.CardWrapper>
-        <St.H1>{weather.name}</St.H1>
         {imgURL && <img src={imgURL} alt={weather.weather?.[0].description || "weather"}/>}
+        <St.H1>{weather.name}</St.H1>
         <St.Text>
           <p>온도: {weather.main?.temp} ℃</p>
         </St.Text>

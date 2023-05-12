@@ -1,66 +1,61 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useState } from 'react';
+import React from "react";
+import styled from "styled-components";
+import { useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const SearchForecast = () => {
-  const [area, setArea] = useState('');
-  const [option, setOption] = useState('day'); // ['day', 'week']
+  const [area, setArea] = useState("");
+  const [option, setOption] = useState("day"); // ['day', 'week']
   const navigate = useNavigate();
 
   const handleSelect = (e) => {
     setOption(e.target.value);
-    };
+  };
 
   const handleChange = (e) => {
     setArea(e.target.value);
-    };
-  
+  };
+
   const handleClick = () => {
     console.log(option);
     navigate(`/${option}/${area}`);
-    
-    };
+  };
 
   return (
     <St.SearchBar>
-    <St.ComboBox>
-    <select onChange={handleSelect}>
-			<option value="day">
-				오늘
-			</option>
-			<option value="week">주간</option>
-		</select>
-    </St.ComboBox>
-    <St.Input 
-    input type="text" placeholder="영어로 도시명(ex. seoul)"
-    onChange={handleChange}
-    />
-    <St.Button 
-    button type="button" onClick={handleClick}>날씨 검색
-    </St.Button>
-
+      <St.ComboBox>
+        <select onChange={handleSelect}>
+          <option value="day">오늘</option>
+          <option value="week">주간</option>
+        </select>
+      </St.ComboBox>
+      <St.Input
+        type="text"
+        placeholder="영어로 도시명(ex. seoul)"
+        onChange={handleChange}
+      />
+      <St.Button type="button" onClick={handleClick}>
+        날씨 검색
+      </St.Button>
     </St.SearchBar>
-	);
-}
+  );
+};
 
-export default SearchForecast
+export default SearchForecast;
 
 const St = {
-  SearchBar : styled.section`
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  SearchBar: styled.section`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
-
   `,
   ComboBox: styled.div`
     & > select {
       ${({ theme }) => theme.fonts.Content};
       color: ${({ theme }) => theme.colors.Blue};
-      
+
       border: 0.2rem solid ${({ theme }) => theme.colors.Blue};
       border-radius: 0.5rem;
       padding: 0.5rem;
@@ -68,8 +63,8 @@ const St = {
       :hover {
         background-color: ${({ theme }) => theme.colors.Blue};
         color: ${({ theme }) => theme.colors.White};
-    } 
-}
+      }
+    }
   `,
   Input: styled.input`
     width: 50rem;
@@ -82,7 +77,7 @@ const St = {
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin-left: 1rem;
-`,
+  `,
   Button: styled.button`
     width: 17rem;
     height: 7rem;
@@ -98,6 +93,6 @@ const St = {
     :hover {
       background-color: ${({ theme }) => theme.colors.White};
       color: ${({ theme }) => theme.colors.Blue};
-  }
-    `,
-}
+    }
+  `,
+};
