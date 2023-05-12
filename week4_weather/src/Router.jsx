@@ -18,6 +18,7 @@ const Router = () => {
             <Route path="/week" element={<Week/>}>
                 <Route path=":area" element={<Weekcard/>} />
             </Route>
+            <Route path="*" element={<Error/>} />
         </Routes>
     </BrowserRouter>
   )
