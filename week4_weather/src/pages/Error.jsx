@@ -1,23 +1,14 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import ErrorMessage from '../components/ErrorMessage'
+import PageLayout from '../components/PageLayout'
 
 const Error = () => {
   return (
-    <ErrorMessage> Error 404 : 찾을 수 없는 페이지입니다 </ErrorMessage>
+    <PageLayout>
+      <Outlet/>
+    </PageLayout>
   )
 }
 
 export default Error
-
-const ErrorMessage = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 100vh;
-    
-    font-size: 2rem;
-    font-weight: bold;
-    color: ${({ theme }) => theme.colors.Blue};
-`
-
