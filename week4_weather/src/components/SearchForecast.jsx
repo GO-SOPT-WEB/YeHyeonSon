@@ -19,17 +19,19 @@ const SearchForecast = () => {
     };
   
   const handleClick = () => {
-        navigate(`/${option}/${area}`);
+    console.log(option);
+    navigate(`/${option}/${area}`);
+    
     };
 
   return (
     <St.SearchBar>
     <St.ComboBox>
     <select onChange={handleSelect}>
-			<option key="day" value="일간">
+			<option value="day">
 				오늘
 			</option>
-			<option key="week" value="주간">주간</option>
+			<option value="week">주간</option>
 		</select>
     </St.ComboBox>
     <St.Input 

@@ -4,19 +4,21 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { WEATHER_TYPE } from '../constants/weather'
 
+
 const Weekcard = () => {
 
     const { area } = useParams();
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState([]);
     const imgURL = WEATHER_TYPE.filter(item => item.description === weather.weather?.[0].description)[0]?.imgURL || WEATHER_TYPE[0].imgURL;
+
 
     console.log(imgURL)
     useEffect(() => {
       axios
-      .get(`https://api.openweathermap.org/data/2.5/weather?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric`)
+      .get(`https://api.openweathermap.org/data/2.5/forecast?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric`)
       .then((response) => {
         console.log(response.data);
-        setWeather(response.data);
+        setWeather(response.data.list);
       })
       .catch((error) => {
         console.log(error);
@@ -25,28 +27,42 @@ const Weekcard = () => {
 
 
     return (
-      <St.CardWrapper>
-        <St.H1>{weather.name}</St.H1>
-        {imgURL && <img src={imgURL} alt={weather.weather?.[0].description || "weather"}/>}
+        <St.Container>
+        {weather.map((item, index) => (
+          <St.CardWrapper key={index}>
+            <St.H1>
+            {new Date(item.dt_txt).toLocaleDateString()}
+            </St.H1>
+            {imgURL && <img src={imgURL} alt={item.weather?.[0].description || "weather"}/>}
+        <St.H1>{item.name}</St.H1>
         <St.Text>
-          <p>온도: {weather.main?.temp} ℃</p>
+          <p>온도: {item.main?.temp} ℃</p>
         </St.Text>
         <St.Text>
-          <p>체감 온도: {weather.main?.feels_like} ℃</p>
+          <p>체감 온도: {item.main?.feels_like} ℃</p>
         </St.Text>
         <St.Text>
-          <p>최저/최고: {weather.main?.temp_min} ℃ / {weather.main?.temp_max} ℃</p>
+          <p>최저/최고: {item.main?.temp_min} ℃ / {item.main?.temp_max} ℃</p>
         </St.Text>
         <St.Text>
-          <p>구름: {weather.clouds?.all} %</p>
+          <p>구름: {item.clouds?.all} %</p>
         </St.Text>
       </St.CardWrapper>
+    ))}
+    </St.Container>
     )
   }
   
   export default Weekcard;
 
   const St = {
+    Container: styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+  `,
 
     CardWrapper: styled.article`
     display: flex;
