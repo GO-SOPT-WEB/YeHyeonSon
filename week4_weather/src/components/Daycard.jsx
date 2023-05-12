@@ -8,7 +8,9 @@ const Daycard = () => {
 
     const { area } = useParams();
     const [weather, setWeather] = useState({});
-  
+    const imgURL = WEATHER_TYPE.filter(item => item.description === weather.weather?.[0].description)[0]?.imgURL || WEATHER_TYPE[0].imgURL;
+
+    console.log(imgURL)
     useEffect(() => {
       axios
       .get(`https://api.openweathermap.org/data/2.5/weather?q=${area}&appid=${import.meta.env.VITE_APP_WEATHER}&units=metric`)
@@ -20,11 +22,12 @@ const Daycard = () => {
         console.log(error);
       });
     }, [area]);
-  
+
+
     return (
       <St.CardWrapper>
         <St.H1>{weather.name}</St.H1>
-  
+        {imgURL && <img src={imgURL} alt={weather.weather?.[0].description || "weather"}/>}
         <St.Text>
           <p>온도: {weather.main?.temp} ℃</p>
         </St.Text>
