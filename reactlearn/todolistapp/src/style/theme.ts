@@ -13,7 +13,7 @@ const fonts = {
     font-family: "HSYuji-Regular";
     font-style: normal;
     font-weight: 700;
-    font-size: 6rem;
+    font-size: 3rem;
     line-height: 4rem;
     letter-spacing: -0.05rem;
   `,
@@ -21,15 +21,15 @@ const fonts = {
     font-family: "HSYuji-Regular";
     font-style: normal;
     font-weight: 500;
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 3rem;
     letter-spacing: -0.05rem;
   `,
   Content: css`
     font-family: "HSYuji-Regular";
     font-style: normal;
-    font-weight: 700;
-    font-size: 3rem;
+    font-weight: 400;
+    font-size: 2rem;
     line-height: 2.5rem;
     letter-spacing: -0.05rem;
   `,
