@@ -38,8 +38,8 @@ const TodoDate = styled.div`
 
 const DeleteButton = styled.button`
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.Black};
-  background-color: ${({ theme }) => theme.colors.InputBlue};
+  color: ${({ theme }) => theme.colors.Blue};
+  background-color: ${({ theme }) => theme.colors.Gray};
   ${({ theme }) => theme.fonts.Content};
   font-size: 14px;
   border: none;

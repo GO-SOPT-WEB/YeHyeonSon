@@ -32,7 +32,7 @@ const InputWrapper = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.Black};
     border-radius: 0.5rem;
     ${({ theme }) => theme.fonts.Content};
-    font-size: smaller;
+ 
     
   }
 
@@ -43,12 +43,11 @@ const InputWrapper = styled.div`
   
   button {
     cursor: pointer;
-    width: 80%;
+    width: 5rem;
     border: none;
     border-radius: 0.5rem;
     background-color: ${({ theme }) => theme.colors.Blue};
     ${({ theme }) => theme.fonts.Content};
-    font-size: smaller;
     color: ${({ theme }) => theme.colors.White};
   }
 `;

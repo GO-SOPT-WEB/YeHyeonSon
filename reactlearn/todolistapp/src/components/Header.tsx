@@ -11,11 +11,13 @@ const Header = () => {
 
 export default Header;
 
+
+const HeaderWrpper = styled.div`
+  ${({ theme }) => theme.fonts.Title};
+`;
+
 const HeaderDate = styled.h1`
   margin-bottom: 0rem;
   color: ${({ theme }) => theme.colors.Blue};
-`;
-
-const HeaderWrpper = styled.div`
-  ${({ theme }) => theme.fonts.SubTitle};
+  ${({ theme }) => theme.fonts.Title};
 `;
