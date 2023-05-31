@@ -1,10 +1,14 @@
 import styled from "styled-components";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   return (
     <TodoListWrapper>
       <TodoListTitle>TodoList🍀</TodoListTitle>
       <SearchBar type="text" placeholder="검색어를 입력하세요" />
+      <TodoItem />
+      <TodoItem />
+      <TodoItem />
     </TodoListWrapper>
   );
 };

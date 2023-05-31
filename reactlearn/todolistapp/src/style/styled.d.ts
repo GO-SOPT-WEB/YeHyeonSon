@@ -7,6 +7,9 @@ declare module "styled-components" {
         Blue: string;
         Black: string;
         White: string;
+        Gray: string;
+        BackgroundBlue: string;
+        InputBlue: string;
       };
       fonts: {
         Title: SerializedStyles;
