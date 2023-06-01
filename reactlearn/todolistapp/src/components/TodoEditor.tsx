@@ -21,6 +21,12 @@ const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
     setContent("");
   };
 
+    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit();
+    }
+};
+
   return (
     <TodoEditorWrapper>
       <h4>새로운 Todo 작성하기🖍</h4>
@@ -29,6 +35,7 @@ const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
           ref={inputRef}
           value={content}
           onChange={onChangeContent}
+          onKeyDown={onKeyDown}
           placeholder="새로운 Todo..."
         />
         <button onClick={onSubmit}>추가</button>
