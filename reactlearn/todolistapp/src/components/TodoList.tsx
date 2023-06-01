@@ -12,6 +12,11 @@ const TodoList: React.FC<TodoListProps> = ({ todo }) => {
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     };
+  const getSearchedTodo = () => {
+    return search === ""
+    ? todo
+    : todo.filter((item) => item.content.includes(search));
+    };
 
   return (
     <TodoListWrapper>
@@ -20,8 +25,8 @@ const TodoList: React.FC<TodoListProps> = ({ todo }) => {
       value={search}
       onChange={onChangeSearch} type="text" placeholder="검색어를 입력하세요" />
       <div className="list_wrapper">
-        {todo.map((item) => (
-          <TodoItem key={item.id} {...item} />
+        {getSearchedTodo().map((item) => (
+            <TodoItem key={item.id} {...item} />
         ))}
       </div>
     </TodoListWrapper>
