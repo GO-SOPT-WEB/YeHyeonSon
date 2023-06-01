@@ -6,8 +6,38 @@ import { GlobalStyle } from "./style/globalStyle";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import TodoItem from "./components/TodoItem";
+import {useState} from "react";
+
+const mockTodo = [
+  {id:0,
+  isDone: false,
+  content: "리액트 공부하기",
+  createDate: new Date().getTime(),
+  },
+  {id:1,
+  isDone: false,
+  content: "빨래 널기",
+  createDate: new Date().getTime(),
+  },
+  {id:2,
+  isDone: false,
+  content: "노래 연습하기",
+  createDate: new Date().getTime(),
+  },
+]
 
 function App() {
+  const [todo, setTodo] = useState(mockTodo);
+
+  const onCreate = (content: string) => {
+    const newItem = {
+      id: 0,
+      content,
+      isDone: false,
+      createDate: new Date().getTime(),
+    };
+    setTodo([newItem, ...todo]);
+  };
   return (
     <div className="App">
       <GlobalStyle />
