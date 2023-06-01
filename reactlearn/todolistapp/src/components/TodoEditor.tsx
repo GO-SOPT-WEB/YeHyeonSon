@@ -7,11 +7,16 @@ interface TodoEditorProps {
 
 const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
   const [content, setContent] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
   const onChangeContent = (e: ChangeEvent<HTMLInputElement>) => {
     setContent(e.target.value);
   };
 
   const onSubmit = () => {
+    if (!content) {
+      inputRef.current?.focus();
+      return;
+    }
     onCreate(content);
   };
 
@@ -20,6 +25,7 @@ const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
       <h4>새로운 Todo 작성하기🖍</h4>
       <InputWrapper>
         <input
+          ref={inputRef}
           value={content}
           onChange={onChangeContent}
           placeholder="새로운 Todo..."
