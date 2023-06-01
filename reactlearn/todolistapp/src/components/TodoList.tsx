@@ -5,9 +5,10 @@ import { useState } from "react";
 
 interface TodoListProps {
   todo: Todo[];
+  onUpdate: (targetId: number) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todo }) => {
+const TodoList: React.FC<TodoListProps> = ({ todo, onUpdate }: TodoListProps) => {
   const [search, setSearch] = useState("");
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -31,7 +32,7 @@ const TodoList: React.FC<TodoListProps> = ({ todo }) => {
       />
       <div className="list_wrapper">
         {getSearchedTodo().map((item) => (
-          <TodoItem key={item.id} {...item} />
+          <TodoItem key={item.id} {...item} onUpdate={onUpdate} />
         ))}
       </div>
     </TodoListWrapper>

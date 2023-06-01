@@ -5,12 +5,16 @@ interface TodoItemProps {
     content: string;
     isDone: boolean;
     createdDate: number;
+    onUpdate: (targetId: number) => void;
   }
 
-const TodoItem = ({id, content, isDone, createdDate}: TodoItemProps) => {
+const TodoItem = ({id, content, isDone, createdDate, onUpdate}: TodoItemProps) => {
+    const onChangeCheckbox = () => {
+        onUpdate(id);
+    }
   return (
     <TodoItemWrapper>
-      <TodoCheckBox checked={isDone} type="checkbox" />
+      <TodoCheckBox onChange={onChangeCheckbox} checked={isDone} type="checkbox" />
       <TodoTitle>{content}</TodoTitle>
       <TodoDate>{new Date(createdDate).toLocaleDateString()}</TodoDate>
       <DeleteButton>삭제</DeleteButton>

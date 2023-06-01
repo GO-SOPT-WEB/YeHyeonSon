@@ -43,13 +43,22 @@ function App() {
     setTodo([newItem, ...todo]);
     idRef.current += 1;
   };
+
+  const onUpdate = (targetId: number) => {
+    setTodo(
+      todo.map((item) =>
+        item.id === targetId ? { ...item, isDone: !item.isDone } : item
+      )
+    );
+  };
+
   return (
     <div className="App">
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Header />
         <TodoEditor onCreate={onCreate} />
-        <TodoList todo={todo} />
+        <TodoList todo={todo} onUpdate={onUpdate} />
       </ThemeProvider>
     </div>
   );
