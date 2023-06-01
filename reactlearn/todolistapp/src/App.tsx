@@ -6,7 +6,7 @@ import { GlobalStyle } from "./style/globalStyle";
 import TodoEditor from "./components/TodoEditor";
 import TodoList from "./components/TodoList";
 import TodoItem from "./components/TodoItem";
-import {useState} from "react";
+import {useState, useRef} from "react";
 
 const mockTodo = [
   {id:0,
@@ -28,15 +28,17 @@ const mockTodo = [
 
 function App() {
   const [todo, setTodo] = useState(mockTodo);
+  const idRef = useRef(3);
 
   const onCreate = (content: string) => {
     const newItem = {
-      id: 0,
+      id: idRef.current,
       content,
       isDone: false,
       createDate: new Date().getTime(),
     };
     setTodo([newItem, ...todo]);
+    idRef.current += 1;
   };
   return (
     <div className="App">
