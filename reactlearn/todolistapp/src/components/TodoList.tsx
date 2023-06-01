@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { Todo } from "../Types";
 
-const TodoList = () => {
+interface TodoListProps {
+  todo: Todo[];
+}
+
+const TodoList: React.FC<TodoListProps> = ({ todo }) => {
   return (
     <TodoListWrapper>
       <TodoListTitle>TodoList🍀</TodoListTitle>
       <SearchBar type="text" placeholder="검색어를 입력하세요" />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      <div className="list_wrapper">
+        {todo.map((item) => (
+          <TodoItem {...item} />
+        ))}
+      </div>
     </TodoListWrapper>
   );
 };

@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
-const TodoItem = () => {
+interface TodoItemProps {
+    id: number;
+    content: string;
+    isDone: boolean;
+    createdDate: number;
+  }
+
+const TodoItem = ({id, content, isDone, createdDate}: TodoItemProps) => {
   return (
     <TodoItemWrapper>
-      <TodoCheckBox type="checkbox" />
-      <TodoTitle>할 일</TodoTitle>
-      <TodoDate>{new Date().toLocaleDateString()}</TodoDate>
+      <TodoCheckBox checked={isDone} type="checkbox" />
+      <TodoTitle>{content}</TodoTitle>
+      <TodoDate>{new Date(createdDate).toLocaleDateString()}</TodoDate>
       <DeleteButton>삭제</DeleteButton>
     </TodoItemWrapper>
   );
