@@ -1,12 +1,30 @@
 import styled from "styled-components";
+import { useState, useRef, ChangeEvent } from "react";
 
-const TodoEditor = () => {
+interface TodoEditorProps {
+  onCreate: (content: string) => void;
+}
+
+const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
+  const [content, setContent] = useState("");
+  const onChangeContent = (e: ChangeEvent<HTMLInputElement>) => {
+    setContent(e.target.value);
+  };
+
+  const onSubmit = () => {
+    onCreate(content);
+  };
+
   return (
     <TodoEditorWrapper>
       <h4>새로운 Todo 작성하기🖍</h4>
       <InputWrapper>
-        <input type="text" placeholder="새로운 Todo..." />
-        <button>추가</button>
+        <input
+          value={content}
+          onChange={onChangeContent}
+          placeholder="새로운 Todo..."
+        />
+        <button onClick={onSubmit}>추가</button>
       </InputWrapper>
     </TodoEditorWrapper>
   );
@@ -32,15 +50,13 @@ const InputWrapper = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.Black};
     border-radius: 0.5rem;
     ${({ theme }) => theme.fonts.Content};
- 
-    
   }
 
   input :focus {
     outline: none;
     border: 1px solid ${({ theme }) => theme.colors.Blue};
   }
-  
+
   button {
     cursor: pointer;
     width: 5rem;
