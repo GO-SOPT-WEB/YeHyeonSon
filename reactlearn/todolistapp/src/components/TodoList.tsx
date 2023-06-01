@@ -13,7 +13,7 @@ const TodoList: React.FC<TodoListProps> = ({ todo }) => {
       <SearchBar type="text" placeholder="검색어를 입력하세요" />
       <div className="list_wrapper">
         {todo.map((item) => (
-          <TodoItem {...item} />
+          <TodoItem key={item.id} {...item} />
         ))}
       </div>
     </TodoListWrapper>
