@@ -52,13 +52,17 @@ function App() {
     );
   };
 
+  const onDelete = (targetId: number) => {
+    setTodo(todo.filter((item) => item.id !== targetId));
+  };
+
   return (
     <div className="App">
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Header />
         <TodoEditor onCreate={onCreate} />
-        <TodoList todo={todo} onUpdate={onUpdate} />
+        <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete}/>
       </ThemeProvider>
     </div>
   );
