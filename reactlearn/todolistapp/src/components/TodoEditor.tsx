@@ -18,6 +18,7 @@ const TodoEditor: React.FC<TodoEditorProps> = ({ onCreate }) => {
       return;
     }
     onCreate(content);
+    setContent("");
   };
 
   return (
