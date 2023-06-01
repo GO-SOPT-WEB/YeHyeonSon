@@ -1,16 +1,24 @@
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { Todo } from "../Types";
+import { useState } from "react";
 
 interface TodoListProps {
   todo: Todo[];
 }
 
 const TodoList: React.FC<TodoListProps> = ({ todo }) => {
+  const [search, setSearch] = useState("");
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+    };
+
   return (
     <TodoListWrapper>
       <TodoListTitle>TodoList🍀</TodoListTitle>
-      <SearchBar type="text" placeholder="검색어를 입력하세요" />
+      <SearchBar 
+      value={search}
+      onChange={onChangeSearch} type="text" placeholder="검색어를 입력하세요" />
       <div className="list_wrapper">
         {todo.map((item) => (
           <TodoItem key={item.id} {...item} />
