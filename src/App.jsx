@@ -40,9 +40,6 @@ function App() {
   
   //shuffle cards
     const shuffleCards = ()=>{
-      /*
-      const filtered = getFilteredData(filteredData);
-      */
       const shuffledCards = getFilteredData()
       .sort(()=>Math.random()-0.5)
       .map((card)=>({...card, id:Math.random()}));
@@ -120,8 +117,7 @@ function App() {
       }
     },[choiceOne, choiceTwo])
   
-    console.log(cards)
-  
+
     // choice 리셋하고 턴 수 증가
     const resetTurn = () => {
       setChoiceOne(null);
