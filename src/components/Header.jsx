@@ -12,7 +12,7 @@ const Title = styled.h1`
   font-family: ${props => props.theme.fontFamily};
   font-size: 3.5rem;
   text-align: center;
-  color: #fff;
+  color: black;
 `;
 
 const glowAnimation = keyframes`
@@ -30,7 +30,7 @@ const MatchedCountWrapper = styled.h2`
   font-family: ${props => props.theme.fontFamily};
   font-size: 3rem;
   text-align: center;
-  color: pink;
+  color: #f22cce;
   animation: ${({ matchedCount }) => matchedCount && css`${glowAnimation} 1s ease-in-out`};
 `;
 

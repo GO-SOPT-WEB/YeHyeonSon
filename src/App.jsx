@@ -5,6 +5,7 @@ import ResetGame from "./components/ResetGame";
 import Header from "./components/Header";
 import CardGrid from "./components/CardGrid";
 import ModalPortal from "./components/ModalPortal";
+import styled from "styled-components";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -142,9 +143,11 @@ function App() {
 
   return (
     <div>
+      <HeaderWrapper>
       <Header matchedCount={matchedCount} cards={cards} />
       <SelectLevel handleLevelClick={handleLevelClick} />
       <ResetGame shuffleCards={shuffleCards} />
+      </HeaderWrapper>
       <CardGrid
         cards={cards}
         choiceOne={choiceOne}
@@ -162,3 +165,8 @@ function App() {
 }
 
 export default App;
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+   background-color: #fae9fb;
+  `;

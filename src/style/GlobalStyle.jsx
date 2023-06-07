@@ -10,9 +10,6 @@ const GlobalStyle = createGlobalStyle`
   color: pink;
   
   #root {
-  max-width: max-content;
-  width: 100%;
-  height: 100%;
   margin: 0 auto;
   height: 100%;
   width: 100%;
