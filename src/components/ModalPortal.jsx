@@ -22,23 +22,11 @@ function Modal({ closeModal }) {
 }
 
 function ModalPortal({ isOpen, closeModal }) {
-  const [isModalOpen, setIsModalOpen] = useState(isOpen);
-
-  useEffect(() => {
-    const storedIsModalOpen = localStorage.getItem("isModalOpen");
-    setIsModalOpen(isOpen && storedIsModalOpen !== "true");
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (isOpen) {
-      localStorage.setItem("isModalOpen", "true");
-    } else {
-      localStorage.removeItem("isModalOpen");
-    }
-  }, [isOpen]);
-
-  return isModalOpen
-    ? ReactDOM.createPortal(<Modal closeModal={closeModal} />, document.body)
+  return isOpen
+    ? ReactDOM.createPortal(
+        <Modal closeModal={closeModal} />,
+        document.getElementById("modal")
+      )
     : null;
 }
 

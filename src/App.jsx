@@ -119,8 +119,8 @@ function App() {
     shuffleCards();
   }, []);
 
-  const handleMatchedCount = (count) => {
-    setMatchedCount(count);
+  const resetMatchedCount = () => {
+    setMatchedCount(0);
   };
 
   const openModal = () => {
@@ -132,19 +132,16 @@ function App() {
   };
 
   // Render ModalPortal based on the isModalOpen state
-  const modal = isModalOpen ? (
-    <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />
-  ) : null;
+  const modal = <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />;
 
   useEffect(() => {
-    if (matchedCount / 2 === cards.length / 2 && !isModalOpen) {
+    if (matchedCount / 2 === cards.length / 2 && matchedCount !== 0) {
       openModal();
     }
-  }, [matchedCount, cards.length, isModalOpen]);
+  }, [matchedCount, cards.length]);
 
   return (
     <div>
-      {modal}
       <Header matchedCount={matchedCount} cards={cards} />
       <SelectLevel handleLevelClick={handleLevelClick} />
       <ResetGame shuffleCards={shuffleCards} />
@@ -159,6 +156,7 @@ function App() {
       <p>
         정답수: {matchedCount / 2} / {cards.length / 2}
       </p>
+      <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 }
