@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {DATA} from './data';
-import './App.css';
 import SelectLevel from './components/SelectLevel';
 import ResetGame from './components/ResetGame';
 import Header from './components/Header';

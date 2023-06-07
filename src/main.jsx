@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import App from './App.jsx'
 import './index.css'
-import GlobalStyle from './components/GlobalStyle.jsx'
+import GlobalStyle from './style/GlobalStyle.jsx'
 
 const theme = {
   primaryColor: '#dd60c0',
