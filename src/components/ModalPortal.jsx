@@ -1,6 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
+
+function Modal({ closeModal }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  return (
+    <ModalContainer>
+      <ModalContent>
+        <ModalTitle>🥳🥳축하합니다!!🥳🥳</ModalTitle>
+        <ModalButton onClick={closeModal}>게임으로 돌아가기</ModalButton>
+      </ModalContent>
+    </ModalContainer>
+  );
+}
+
+function ModalPortal({ isOpen, closeModal }) {
+  const [isModalOpen, setIsModalOpen] = useState(isOpen);
+
+  useEffect(() => {
+    const storedIsModalOpen = localStorage.getItem("isModalOpen");
+    setIsModalOpen(isOpen && storedIsModalOpen !== "true");
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      localStorage.setItem("isModalOpen", "true");
+    } else {
+      localStorage.removeItem("isModalOpen");
+    }
+  }, [isOpen]);
+
+  return isModalOpen
+    ? ReactDOM.createPortal(<Modal closeModal={closeModal} />, document.body)
+    : null;
+}
+
+export default ModalPortal;
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -24,11 +66,10 @@ const ModalContent = styled.div`
   border-radius: 0.5rem;
 
   background-color: #fe60b4;
-  
 `;
 
 const ModalTitle = styled.h2`
-   font-family: ${props => props.theme.fontFamily};
+  font-family: ${(props) => props.theme.fontFamily};
   margin-top: 2rem;
   margin-bottom: 2rem;
 
@@ -36,7 +77,7 @@ const ModalTitle = styled.h2`
 
   font-size: 2rem;
   font-weight: bold;
-  color:black;
+  color: black;
 `;
 
 const ModalButton = styled.button`
@@ -47,8 +88,8 @@ const ModalButton = styled.button`
   background-color: #080808;
   color: #fff;
   border: none;
-  
-  font-family: ${props => props.theme.fontFamily};
+
+  font-family: ${(props) => props.theme.fontFamily};
   font-size: 1.2rem;
   cursor: pointer;
 
@@ -56,32 +97,3 @@ const ModalButton = styled.button`
     background-color: #038738;
   }
 `;
-
-
-function Modal({ closeModal }) {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
-  return (
-    <ModalContainer>
-      <ModalContent>
-        <ModalTitle>🥳🥳축하합니다!!🥳🥳</ModalTitle>
-        <ModalButton onClick={closeModal}>게임으로 돌아가기</ModalButton>
-      </ModalContent>
-    </ModalContainer>
-  );
-}
-
-function ModalPortal({ isOpen, closeModal }) {
-  return isOpen ? 
-  (ReactDOM.createPortal(<Modal closeModal={closeModal} />, document.body)
-     ) : null;
-}
-
-export default ModalPortal;
-
