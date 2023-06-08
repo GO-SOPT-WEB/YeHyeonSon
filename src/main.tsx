@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
-import App from './App.jsx'
+import App from './App'
 import './index.css'
-import GlobalStyle from './style/GlobalStyle.jsx'
+import GlobalStyle from './style/GlobalStyle'
 
 const theme = {
   primaryColor: '#dd60c0',
@@ -12,7 +12,7 @@ const theme = {
   fontSize: '1.2rem',
 };
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle/>
