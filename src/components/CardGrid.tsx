@@ -2,6 +2,21 @@ import React from "react";
 import SingleCard from "./SingleCard";
 import styled from "styled-components";
 
+interface Card {
+  id: number;
+  title: string;
+  src: string;
+  matched: boolean;
+}
+
+interface Props {
+  cards: Card[];
+  choiceOne: Card | null;
+  choiceTwo: Card | null;
+  handleChoice: (card: Card) => void;
+  disabled: boolean;
+}
+
 const CardSection = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +32,13 @@ const CardItem = styled.div`
   flex-basis: calc(100% / 6 -1rem);
 `;
 
-const CardGrid = ({ cards, choiceOne, choiceTwo, handleChoice, disabled }) => {
+const CardGrid: React.FC<Props> = ({
+  cards,
+  choiceOne,
+  choiceTwo,
+  handleChoice,
+  disabled,
+}) => {
   return (
     <CardSection>
       {cards.map((card) => (
