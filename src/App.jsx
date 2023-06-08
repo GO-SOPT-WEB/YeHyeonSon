@@ -51,16 +51,7 @@ function App() {
   //level-button 클릭 시, 할당된 카드 짝 수 변경
   const handleLevelClick = (pairs) => {
     setCardPairs(pairs);
-    const filteredData = getFilteredData();
-    const shuffledCards = filteredData
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random() }));
-
-    setChoiceOne(null);
-    setChoiceTwo(null);
-    setCards(shuffledCards);
-    setTurns(0);
-    setMatchedCount(0);
+    shuffleCards();
   };
 
   //선택한 level에 맞게 카드 짝 수 할당
@@ -132,9 +123,7 @@ function App() {
     setIsModalOpen(false);
   };
 
-  // Render ModalPortal based on the isModalOpen state
-  const modal = <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />;
-
+ 
   useEffect(() => {
     if (matchedCount / 2 === cards.length / 2 && matchedCount !== 0) {
       openModal();
@@ -144,9 +133,9 @@ function App() {
   return (
     <div>
       <HeaderWrapper>
-      <Header matchedCount={matchedCount} cards={cards} />
-      <SelectLevel handleLevelClick={handleLevelClick} />
-      <ResetGame shuffleCards={shuffleCards} />
+        <Header matchedCount={matchedCount} cards={cards} />
+        <SelectLevel handleLevelClick={handleLevelClick} />
+        <ResetGame shuffleCards={shuffleCards} />
       </HeaderWrapper>
       <CardGrid
         cards={cards}
@@ -168,5 +157,5 @@ export default App;
 
 const HeaderWrapper = styled.div`
   width: 100%;
-   background-color: #fae9fb;
-  `;
+  background-color: #fae9fb;
+`;
