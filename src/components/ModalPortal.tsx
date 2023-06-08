@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-function Modal({ closeModal }) {
+interface ModalProps {
+  closeModal: () => void;
+}
+
+interface ModalPortalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+}
+
+function Modal({ closeModal }: ModalProps) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -21,11 +30,11 @@ function Modal({ closeModal }) {
   );
 }
 
-function ModalPortal({ isOpen, closeModal }) {
+function ModalPortal({ isOpen, closeModal }: ModalPortalProps) {
   return isOpen
     ? ReactDOM.createPortal(
         <Modal closeModal={closeModal} />,
-        document.getElementById("modal")
+        document.getElementById("modal") as HTMLElement
       )
     : null;
 }
