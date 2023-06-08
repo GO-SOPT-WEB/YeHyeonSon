@@ -1,12 +1,23 @@
 import './SingleCard.css'
+import React from 'react';
 
+interface SingleCardProps {
+    card: {
+        id: number;
+        title: string;
+        src: string;
+        matched: boolean;
+    };
+    handleChoice: (card: {src: string}) => void;
+    flipped: boolean;
+    disabled: boolean;
+}
 
-
-export default function SingleCard({card, handleChoice, flipped, disabled}) {
+function SingleCard({card, handleChoice, flipped, disabled}: SingleCardProps) {
 
     const handleClick = () => {
         if (!disabled) {
-            handleChoice(card)
+            handleChoice(card);
         }
     }
     return(
@@ -21,4 +32,6 @@ export default function SingleCard({card, handleChoice, flipped, disabled}) {
       </div>
     )
 }
+
+export default SingleCard;
 

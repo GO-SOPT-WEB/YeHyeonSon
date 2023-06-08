@@ -13,7 +13,7 @@ interface Props {
   cards: Card[];
   choiceOne: Card | null;
   choiceTwo: Card | null;
-  handleChoice: (card: Card) => void;
+  handleChoice: (card: { src: string }) => void;
   disabled: boolean;
 }
 
