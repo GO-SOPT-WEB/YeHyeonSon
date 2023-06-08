@@ -13,7 +13,7 @@ interface Props {
   cards: Card[];
   choiceOne: Card | null;
   choiceTwo: Card | null;
-  handleChoice: (card: { src: string }) => void;
+  handleChoice: (card: Card | null) => void;
   disabled: boolean;
 }
 
@@ -39,6 +39,7 @@ const CardGrid: React.FC<Props> = ({
   handleChoice,
   disabled,
 }) => {
+  
   return (
     <CardSection>
       {cards.map((card) => (
