@@ -1,0 +1,172 @@
+import React, { useEffect, useState } from "react";
+import { DATA } from "./data";
+import SelectLevel from "./components/SelectLevel";
+import ResetGame from "./components/ResetGame";
+import Header from "./components/Header";
+import CardGrid from "./components/CardGrid";
+import ModalPortal from "./components/ModalPortal";
+import styled from "styled-components";
+
+interface Card {
+  id: number;
+  title: string;
+  src: string;
+  matched: boolean;
+}
+
+interface AppProps {}
+
+function App(props: AppProps) {
+  const [cards, setCards] = useState<Card[]>([]);
+  const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState<Card | null>(null);
+  const [choiceTwo, setChoiceTwo] = useState<Card | null>(null);
+  const [disabled, setDisabled] = useState(false);
+  const [matchedCount, setMatchedCount] = useState(0); //정답 수
+  const [cardPairs, setCardPairs] = useState(5); //카드 짝 수
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const getFilteredData = (): Card[] => {
+    // 원본 데이터를 복사하여 새로운 배열 생성
+    const copiedData = [...DATA];
+
+    // 무작위로 샘플링한 카드 쌍 수 만큼 데이터를 추출하여 배열 생성
+    const filteredData: Card[] = [];
+    for (let i = 0; i < cardPairs; i++) {
+      const randomIndex = Math.floor(Math.random() * copiedData.length); // 남은 데이터 중 무작위 인덱스 선택
+      const randomData = copiedData.splice(randomIndex, 1)[0]; // 선택한 데이터 추출
+      filteredData.push(randomData); // 추출한 데이터를 배열에 추가
+    }
+
+    // 추출한 데이터를 두 번 연속해서 이어붙인 배열을 생성하여 반환
+    const dataWithPairs = [...filteredData, ...filteredData];
+    return dataWithPairs;
+  };
+
+  //shuffle cards
+  const shuffleCards = () => {
+    const shuffledCards = getFilteredData()
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id: Math.random() }));
+
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setCards(shuffledCards);
+    setTurns(0);
+    setMatchedCount(0);
+    // 게임 리셋하면 정답 수도 초기화
+  };
+  //level-button 클릭 시, 할당된 카드 짝 수 변경
+  const handleLevelClick = (pairs: number) => {
+    setCardPairs(pairs);
+    shuffleCards();
+  };
+
+  //선택한 level에 맞게 카드 짝 수 할당
+  useEffect(() => {
+    if (cardPairs === 5) {
+      handleLevelClick(5);
+    } else if (cardPairs === 7) {
+      handleLevelClick(7);
+    } else if (cardPairs === 9) {
+      handleLevelClick(9);
+    }
+  }, [cardPairs]);
+
+  //handle a choice
+  const handleChoice = (card: Card | null) => {
+    if (!choiceOne || (choiceOne && !choiceTwo)) {
+      choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    }
+  };
+  //2개의 카드가 선택되면 비교하기
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      setDisabled(true);
+
+      if (choiceOne.src === choiceTwo.src) {
+        setCards((prevCards) => {
+          const newCards = prevCards.map((card) => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+
+          //정답 수 증가
+          setMatchedCount((prevMatchedCount) => prevMatchedCount + 1);
+
+          return newCards;
+        });
+
+        resetTurn();
+      } else {
+        setTimeout(() => resetTurn(), 1000);
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+
+  // choice 리셋하고 턴 수 증가
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurns) => prevTurns + 1);
+    setDisabled(false);
+  };
+
+  useEffect(() => {
+    shuffleCards();
+  }, []);
+
+  const resetMatchedCount = () => {
+    setMatchedCount(0);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Render ModalPortal based on the isModalOpen state
+  const modal = <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />;
+
+  useEffect(() => {
+    if (matchedCount / 2 === cards.length / 2 && matchedCount !== 0) {
+      openModal();
+    }
+  }, [matchedCount, cards.length]);
+
+  return (
+    <div>
+      <HeaderWrapper>
+        <Header matchedCount={matchedCount} cards={cards} />
+        <SelectLevel handleLevelClick={handleLevelClick} />
+        <ResetGame shuffleCards={shuffleCards} />
+      </HeaderWrapper>
+      <CardGrid
+        cards={cards}
+        choiceOne={choiceOne}
+        choiceTwo={choiceTwo}
+        handleChoice={handleChoice}
+        disabled={disabled}
+      />
+      <p>시도횟수: {turns}</p>
+      <p>
+        정답수: {matchedCount / 2} / {cards.length / 2}
+      </p>
+      <ModalPortal isOpen={isModalOpen} closeModal={closeModal} />
+    </div>
+  );
+}
+
+export default App;
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  background-color: #fae9fb;
+`;
