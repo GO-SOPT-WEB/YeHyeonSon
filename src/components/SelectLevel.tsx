@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { gameLevelAtom } from "../atoms/gameLevel";
 
 interface SelectLevelProps {
   handleLevelClick: (level: number) => void;
@@ -25,22 +27,29 @@ const LevelButton = styled.button`
 `;
 
 const SelectLevel = ({ handleLevelClick }: SelectLevelProps) => {
+  const [gameLevel, setGameLevel] = useRecoilState(gameLevelAtom);
+
+  const handleLevelButtonClick = (level: number) => {
+    handleLevelClick(level);
+    setGameLevel("easy");
+  };
+
   return (
     <Level>
-      <LevelButton value="easy" onClick={() => handleLevelClick(5)}>
+      <LevelButton value="easy" onClick={() => handleLevelButtonClick(5)}>
         Easy
       </LevelButton>
       <LevelButton
         className="level-button"
-        value="medium"
-        onClick={() => handleLevelClick(7)}
+        value="normal"
+        onClick={() => handleLevelButtonClick(7)}
       >
-        Medium
+        Normal
       </LevelButton>
       <LevelButton
         className="level-button"
         value="hard"
-        onClick={() => handleLevelClick(9)}
+        onClick={() => handleLevelButtonClick(9)}
       >
         Hard
       </LevelButton>
