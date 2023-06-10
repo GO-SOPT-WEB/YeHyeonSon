@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import CardGrid from "./components/CardGrid";
 import ModalPortal from "./components/ModalPortal";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { isModalOpenAtom } from "./atoms/modalOpen";
 
 interface Card {
   id: number;
@@ -25,7 +27,7 @@ function App(props: AppProps) {
   const [matchedCount, setMatchedCount] = useState(0); //정답 수
   const [cardPairs, setCardPairs] = useState(5); //카드 짝 수
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useRecoilState(isModalOpenAtom);
 
   const getFilteredData = (): Card[] => {
     // 원본 데이터를 복사하여 새로운 배열 생성
