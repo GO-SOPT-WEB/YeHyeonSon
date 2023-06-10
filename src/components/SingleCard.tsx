@@ -1,12 +1,7 @@
 import "./SingleCard.css";
 import React from "react";
+import Card from "../type/Card";
 
-interface Card {
-  id: number;
-  title: string;
-  src: string;
-  matched: boolean;
-}
 interface SingleCardProps {
   card: Card;
   handleChoice: (card: Card | null) => void;

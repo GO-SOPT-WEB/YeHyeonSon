@@ -1,16 +1,10 @@
 import React, { memo, useState, useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
+import Card from "../type/Card";
 
 interface MemoMatchedCountProps {
   matchedCount: number;
   cards: Card[];
-}
-
-interface Card {
-  id: number;
-  title: string;
-  src: string;
-  matched: boolean;
 }
 
 interface HeaderProps {

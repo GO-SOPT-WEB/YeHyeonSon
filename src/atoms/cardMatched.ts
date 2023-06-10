@@ -1,11 +1,5 @@
 import {atom} from "recoil";
-
-interface Card {
-    id: number;
-    title: string;
-    src: string;
-    matched: boolean;
-}
+import Card from "../type/Card";
 
 export const turnsStateAtom = atom<number>({
     key: "turnsState",

@@ -1,13 +1,7 @@
 import React from "react";
 import SingleCard from "./SingleCard";
 import styled from "styled-components";
-
-interface Card {
-  id: number;
-  title: string;
-  src: string;
-  matched: boolean;
-}
+import Card from "../type/Card";
 
 interface Props {
   cards: Card[];
@@ -39,7 +33,6 @@ const CardGrid: React.FC<Props> = ({
   handleChoice,
   disabled,
 }) => {
-  
   return (
     <CardSection>
       {cards.map((card) => (

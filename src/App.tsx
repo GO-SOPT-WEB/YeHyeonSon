@@ -8,6 +8,7 @@ import ModalPortal from "./components/ModalPortal";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { isModalOpenAtom } from "./atoms/modalOpen";
+import Card from "./type/Card";
 import {
   turnsStateAtom,
   choiceOneStateAtom,
@@ -15,13 +16,6 @@ import {
   matchedCountStateAtom,
   cardPairsStateAtom,
 } from "./atoms/cardMatched";
-
-interface Card {
-  id: number;
-  title: string;
-  src: string;
-  matched: boolean;
-}
 
 interface AppProps {}
 
