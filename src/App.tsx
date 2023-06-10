@@ -8,6 +8,7 @@ import ModalPortal from "./components/ModalPortal";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { isModalOpenAtom } from "./atoms/modalOpen";
+import { turnsStateAtom, choiceOneStateAtom, choiceTwoStateAtom, matchedCountStateAtom, cardPairsStateAtom } from "./atoms/cardMatched";
 
 interface Card {
   id: number;
@@ -20,12 +21,12 @@ interface AppProps {}
 
 function App(props: AppProps) {
   const [cards, setCards] = useState<Card[]>([]);
-  const [turns, setTurns] = useState(0);
-  const [choiceOne, setChoiceOne] = useState<Card | null>(null);
-  const [choiceTwo, setChoiceTwo] = useState<Card | null>(null);
+  const [turns, setTurns] = useRecoilState(turnsStateAtom);
+  const [choiceOne, setChoiceOne] = useRecoilState(choiceOneStateAtom);
+  const [choiceTwo, setChoiceTwo] = useRecoilState(choiceTwoStateAtom);
   const [disabled, setDisabled] = useState(false);
-  const [matchedCount, setMatchedCount] = useState(0); //정답 수
-  const [cardPairs, setCardPairs] = useState(5); //카드 짝 수
+  const [matchedCount, setMatchedCount] = useRecoilState(matchedCountStateAtom); //정답 수
+  const [cardPairs, setCardPairs] = useRecoilState(cardPairsStateAtom); //카드 짝 수
 
   const [isModalOpen, setIsModalOpen] = useRecoilState(isModalOpenAtom);
 
