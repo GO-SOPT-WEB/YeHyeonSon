@@ -7,12 +7,6 @@ interface Card {
     matched: boolean;
 }
 
-
-export const cardsStateAtom = atom<Card[]>({
-    key: "cardsState",
-    default: [],
-});
-
 export const turnsStateAtom = atom<number>({
     key: "turnsState",
     default: 0,

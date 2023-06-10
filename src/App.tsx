@@ -8,7 +8,13 @@ import ModalPortal from "./components/ModalPortal";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { isModalOpenAtom } from "./atoms/modalOpen";
-import { turnsStateAtom, choiceOneStateAtom, choiceTwoStateAtom, matchedCountStateAtom, cardPairsStateAtom } from "./atoms/cardMatched";
+import {
+  turnsStateAtom,
+  choiceOneStateAtom,
+  choiceTwoStateAtom,
+  matchedCountStateAtom,
+  cardPairsStateAtom,
+} from "./atoms/cardMatched";
 
 interface Card {
   id: number;
