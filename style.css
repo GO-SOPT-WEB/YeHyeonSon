@@ -159,16 +159,17 @@ main {
 
 }
 
-.hahtag {
+.hashtag {
     width:150px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow:hidden;
+    margin-bottom: 0.5rem;
 }
 
 .hashtag-tag {
     font-size: 1rem;
-    color: rgb(80, 83, 81);
+    color: rgb(151, 170, 155);
 
 }
 
@@ -197,5 +198,6 @@ main {
 
 
 .heart:hover {
-    content:url("asset/heart_fill.svg" );
+    content:url("asset/icon/heart_red.svg" );
 }
+
