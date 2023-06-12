@@ -201,3 +201,16 @@ main {
     content:url("asset/icon/heart_red.svg" );
 }
 
+
+@media (max-width:750px){ 
+    .cardMenu{
+        width: 12rem;
+    }
+
+    #card__section{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
