@@ -139,16 +139,16 @@ main {
 
 
 .cardMenu {
-    width:200px;
+    width:12rem;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 1rem;
     margin: 1rem;
-    box-shadow: 2px 2px 2px rgb(192, 192, 192);
+    box-shadow: 0.2rem 0.2rem 0.2rem rgb(192, 192, 192);
 }
 
 .cardMenu_name {
