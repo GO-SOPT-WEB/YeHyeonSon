@@ -42,7 +42,7 @@ header {
 }
 header > h1 {
     font-size: 2rem;
-    text-shadow: 5px 5px 5px gray;
+    text-shadow: 0.2rem 0.2rem 0.2rem gray;
 }
 
 #hamburger > img {
@@ -73,11 +73,11 @@ main {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    gap: 12px;
+    gap: 1rem;
     background-color: black;
-    width:200px;
-    height:230px;
-    border-radius: 20px;
+    width:12rem;
+    height:15rem;
+    border-radius: 1rem;
     margin:1rem;
 
 }
@@ -103,7 +103,7 @@ main {
 #nav_category .type_list:hover {
     background-color: white;
     color: darkgreen;
-    border-radius: 10px;
+    border-radius: 0.8rem;
 }
 
 .hamburger_list {
@@ -152,7 +152,7 @@ main {
 }
 
 .cardMenu_name {
-    padding-top:10px;
+    padding-top:0.8rem;
     font-size: 1.1rem;
     font-weight: 600;
     margin:1rem;
@@ -160,7 +160,7 @@ main {
 }
 
 .hashtag {
-    width:150px;
+    width:10rem;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow:hidden;
@@ -180,13 +180,13 @@ main {
 .cardMenu .menu_img {
     display:block;
     margin: auto; 
-    border-radius: 30px;
+    border-radius: 2rem;
 }
 
 .menu_img > img {
     width: 90%;
     height: 90%;
-    border-radius: 30px;
+    border-radius: 2rem;
 }
 
 .heart {
